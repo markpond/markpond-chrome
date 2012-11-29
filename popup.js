@@ -21,7 +21,7 @@ $(function() {
 		}
     	$('#form').css('display', 'none');
     	$('#loader').fadeIn(500, function() {
-    		$('#load').load(baseURL, function() {
+    		$('#popup-load').load(baseURL, function() {
     			window.close();
     		});
     	});
