@@ -22,11 +22,7 @@ $(function() {
     	$('#form').css('display', 'none');
     	$('#loader').fadeIn(500, function() {
     		$('#load').load(baseURL, function() {
-    			$('#loader').css('background', 'url(done.png) no-repeat center center').delay(5000, function() {
-    				$('#done').delay(500).fadeIn(1000, function() {
-    					window.close();
-    				})
-    			});
+    			window.close();
     		});
     	});
     });
