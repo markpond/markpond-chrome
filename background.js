@@ -4,7 +4,7 @@ chrome.contextMenus.create({
 	"contexts": ["page", "selection", "link"],
 	"onclick" : function(e) {
 		var url = e.pageUrl;
-		var markpondURL = "http://markpond.com/core/bookmarklets/chrome-context?";
+		var markpondURL = "https://markpond.com/core/bookmarklets/chrome-context?";
           
         if (e.selectionText) { markpondURL += "title=" + encodeURIComponent(e.selectionText) + "&"; }
           

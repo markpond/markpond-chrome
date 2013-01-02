@@ -15,8 +15,8 @@ Endpoints
 
 Markpond contacts this endpoint when saving bookmarks from the popup menu:
 
-	http://markpond.com/core/bookmarklets/chrome
+	https://markpond.com/core/bookmarklets/chrome
 	
 And this one when saving using the context menu:
 
-	http://markpond.com/core/bookmarklets/chrome-context
+	https://markpond.com/core/bookmarklets/chrome-context

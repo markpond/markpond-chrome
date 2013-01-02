@@ -31,12 +31,18 @@ $(function() {
 				private: isPrivate
 			  },
 			  cache: false
-			}).done(function( msg ) {
-			  $('#loader').css('background', 'url(done.png) no-repeat center center').delay(5000, function() {
-					$('#done').delay(500).fadeIn(1000, function() {
-						window.close();
-					})
-				});
+			}).done(function(msg) {
+				if (msg == 'NotLoggedIn') {
+					$('#loader').css('padding', '15px');
+					$('#loader').css('height', '50px');
+					$('#loader').html('<p>Please log in to Markpond first</p>');
+				} else {
+				  	$('#loader').css('background', 'url(done.png) no-repeat center center').delay(5000, function() {
+						$('#done').delay(500).fadeIn(1000, function() {
+							window.close();
+						})
+					});
+			  	}
 			});
 		});
 	});
