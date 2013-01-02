@@ -1,30 +1,44 @@
 $(function() {
 	chrome.tabs.getSelected(null, function(tab) {
-        //var tabId = tab.id;
-        var tabUrl = tab.url;
-        $('#url').val(tabUrl);
-    });
-    chrome.tabs.getSelected(null,function(tab) { // null defaults to current window
-        var title = tab.title;
-        $('#title').val(title);
-        
-    });
+		//var tabId = tab.id;
+		var tabUrl = tab.url;
+		$('#url').val(tabUrl);
+	});
+	chrome.tabs.getSelected(null,function(tab) { // null defaults to current window
+		var title = tab.title;
+		$('#title').val(title);
+		
+	});
 
-    $('#save').click(function() {
-    	var baseURL = 'http://markpond.com/core/bookmarklets/chrome?';
-    	baseURL += 'url=' + encodeURIComponent($('#url').val());
-    	baseURL += '&title=' + encodeURIComponent($('#title').val());
-    	baseURL += '&tags=' + encodeURIComponent($('#tags').val());
-    	baseURL += '&excerpt=' + encodeURIComponent($('#excerpt').val());
-    	if ($('input#private').is(':checked')) {
-    		baseURL += '&private=true';
+	$('#save').click(function() {
+
+		if ($('input#private').is(':checked')) {
+			isPrivate = 'true';
+		} else {
+			isPrivate = '';
 		}
-    	$('#form').css('display', 'none');
-    	$('#loader').fadeIn(500, function() {
-    		$('#popup-load').load(baseURL, function() {
-    			window.close();
-    		});
-    	});
-    });
+
+		$('#form').css('display', 'none');
+		$('#loader').fadeIn(500, function() {
+			$.ajax({
+			  type: "POST",
+			  url: "https://markpond.com/core/bookmarklets/chrome",
+			  data: {
+				url: $('#url').val(),
+				title: $('#title').val(),
+				tags: $('#tags').val(),
+				excerpt: $('#excerpt').val(),
+				private: isPrivate
+			  },
+			  cache: false
+			}).done(function( msg ) {
+			  $('#loader').css('background', 'url(done.png) no-repeat center center').delay(5000, function() {
+					$('#done').delay(500).fadeIn(1000, function() {
+						window.close();
+					})
+				});
+			});
+		});
+	});
 
 });
