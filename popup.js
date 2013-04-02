@@ -1,3 +1,10 @@
+$(document).ready(function() {
+	$('#tags').tagsInput({
+	  autocomplete_url: 'http://localhost:3000/ajax/tags.json',
+	  removeWithBackspace: true
+	});
+});
+
 $(function() {
 	chrome.tabs.getSelected(null, function(tab) {
 		//var tabId = tab.id;
@@ -21,28 +28,34 @@ $(function() {
 		$('#form').css('display', 'none');
 		$('#loader').fadeIn(500, function() {
 			$.ajax({
-			  type: "POST",
-			  url: "https://markpond.com/core/bookmarklets/chrome",
-			  data: {
-				url: $('#url').val(),
-				title: $('#title').val(),
-				tags: $('#tags').val(),
-				excerpt: $('#excerpt').val(),
-				private: isPrivate
-			  },
-			  cache: false
-			}).done(function(msg) {
-				if (msg == 'NotLoggedIn') {
-					$('#loader').css('padding', '15px');
-					$('#loader').css('height', '50px');
-					$('#loader').html('<p>Please log in to Markpond first</p>');
-				} else {
-				  	$('#loader').css('background', 'url(done.png) no-repeat center center').delay(5000, function() {
-						$('#done').delay(500).fadeIn(1000, function() {
-							window.close();
-						})
-					});
-			  	}
+				type: "POST",
+				url: "http://localhost:3000/bookmarklets/chrome",
+				data: {
+					url: $('#url').val(),
+					title: $('#title').val(),
+					tags: $('#tags').val(),
+					excerpt: $('#excerpt').val(),
+					private: isPrivate
+				},
+				cache: false,
+				complete: function(jqXHR, textStatus) {
+					switch (jqXHR.status) {
+						case 200:
+							$('#loader').css('background', 'url(done.png) no-repeat center center').delay(5000, function() {
+								$('#done').delay(500).fadeIn(1000, function() {
+									window.close();
+								})
+							});
+							break;
+						case 401:
+							$('#loader').css('padding', '15px');
+							$('#loader').css('height', '50px');
+							$('#loader').html('<p>Please log in to Markpond first</p>');
+							break;
+						default:
+							alert("Something went wrong. Please try agian.");
+					}
+				}
 			});
 		});
 	});

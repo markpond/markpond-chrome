@@ -1,20 +1,16 @@
 {
 	"name": "Markpond",
-	"version": "1.2.1",
+	"version": "2.0",
 	"description": "Markpond Google Chrome Extension",
 	"browser_action": {
-		"default_icon": "48.png",
+		"default_icon": "64.png",
 		"default_title": "Markpond",
 		"default_popup": "popup.html"
 	},
 
 	"icons": {
-		"16": "16.png",
-		"32": "32.png",
-		"48": "48.png",
 		"64": "64.png",
-		"128": "128.png",
-		"256": "256.png"
+		"128": "128.png"
 	},
 
 	"manifest_version": 2,

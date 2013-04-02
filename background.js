@@ -1,3 +1,8 @@
+chrome.tabs.getSelected(null,function(tab) { // null defaults to current window
+	var title = tab.title;
+	$('#title').val(title);
+});
+
 // Set up the context menus
 chrome.contextMenus.create({
 	"title": "Save to Markpond",
@@ -6,16 +11,15 @@ chrome.contextMenus.create({
 
         var url = e.pageUrl;
 
-        var endpoint = "http://localhost:3000/bookmarklets/tiny"
-
-        if (e.selectionText) { excerpt = encodeURIComponent(e.selectionText); }
+        if (e.selectionText) { var excerpt = encodeURIComponent(e.selectionText); } else { var excerpt = ''; }
         if (e.linkUrl) { url = encodeURIComponent(e.linkUrl); }
 
         $.ajax({
         	type: "POST",
-        	url: endpoint,
+        	url:  "http://localhost:3000/bookmarklets/tiny",
         	data: {
-        		bookmark_url: url,
+        		url: url,
+        		title: $('#title').val(),
         		source: "Chrome Extension",
         		excerpt: excerpt
         	},

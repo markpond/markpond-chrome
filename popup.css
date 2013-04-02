@@ -1,6 +1,6 @@
 body {
 	min-width: 250px;
-	font-family: 'lemonde-courrier-1', Georgia;
+	font-family: 'MuseoSans-300', Georgia;
 	color: black;
 	margin: 0px;
 	overflow-x: hidden;
@@ -15,7 +15,11 @@ body {
 #form { padding: 5px; padding-top: 12px;}
 
 input, textarea {
-	font-family: 'lemonde-courrier-1', Georgia;
+	font-family: 'MuseoSans-300';
+}
+
+span.tag span {
+	font-size: 15px;
 }
 
 #load { display: none; }
@@ -31,55 +35,12 @@ input, textarea {
 
 input[type="text"], input[type="url"], textarea {
 	font-size: 15px;
-	padding: 6px;
-	width: 244px;
-	max-width: 244px;
-	margin: 0 auto;
-	background: rgba(255,255,255,0.3);
+
 	color: black;
 	outline: none;
-	border: 1px solid #ccc;
 	margin-bottom: 10px;
-}
-
-input[type="text"]:focus, input[type="url"]:focus, textarea:focus {
-	border: 1px solid #a30505;
 }
 
 label#private { display: block; margin-bottom: 10px;}
 
 textarea { height: 60px; max-height: 120px; }
-
-.button {
-	text-align: center;
-	margin-bottom: 20px;
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d83e3e), color-stop(1, #a20b0b) );
-	background:-moz-linear-gradient( center top, #d83e3e 5%, #a20b0b 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d83e3e', endColorstr='#a20b0b');
-	background-color:#d83e3e;
-	-moz-border-radius:2px;
-	-webkit-border-radius:2px;
-	border-radius:2px;
-	display:inline;
-	color:#ffffff;
-	font-family:Georgia;
-	font-size:15px;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:1px 1px 0px #b23e35;
-	margin-bottom: 10px;
-	float: left;
-}
-
-.button:hover {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #a20b0b), color-stop(1, #d83e3e) );
-	background:-moz-linear-gradient( center top, #a20b0b 5%, #d83e3e 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a20b0b', endColorstr='#d83e3e');
-	background-color:#a20b0b;
-}
-
-.button:active {
-	position:relative;
-	top:1px;
-}
