@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$('#tags').tagsInput({
-	  autocomplete_url: 'http://localhost:3000/ajax/tags.json',
+	  autocomplete_url: 'https://markpond.com/ajax/tags.json',
 	  removeWithBackspace: true
 	});
 });
@@ -29,7 +29,7 @@ $(function() {
 		$('#loader').fadeIn(500, function() {
 			$.ajax({
 				type: "POST",
-				url: "http://localhost:3000/bookmarklets/chrome",
+				url: "https://markpond.com/bookmarklets/chrome",
 				data: {
 					url: $('#url').val(),
 					title: $('#title').val(),

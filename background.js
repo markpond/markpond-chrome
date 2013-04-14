@@ -16,7 +16,7 @@ chrome.contextMenus.create({
 
         $.ajax({
         	type: "POST",
-        	url:  "http://localhost:3000/bookmarklets/tiny",
+        	url:  "https://markpond.com/bookmarklets/tiny",
         	data: {
         		url: url,
         		title: $('#title').val(),
